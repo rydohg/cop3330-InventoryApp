@@ -1,0 +1,34 @@
+@startuml
+class InventoryModel {
+    ArrayList<Item> items
+    getInstance()
+    getItems()
+    readDataFromFile(String path)
+    writeDataToFile(String path)
+}
+
+class Item {
+    String name
+    String serial
+    double value
+}
+
+class DataFormatter {
+    toHtml(ArrayList<Item> items)
+    toJson(ArrayList<Item> items)
+    toTsv(ArrayList<Item> items)
+    fromHtml(String data)
+    fromJson(String data)
+    fromTsv(String data)
+}
+
+class MainController {
+
+}
+
+class InventoryItemController {
+    updateItem(ListItem item, boolean empty)
+}
+
+InventoryModel - Item
+@enduml
