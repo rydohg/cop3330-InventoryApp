@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 public class ItemListCell extends ListCell<Item> {
     private FXMLLoader mLoader;
     private ListView<Item> listView;
+    private Item item;
     @FXML private Label item_name;
     @FXML private Label serial_num;
     @FXML private Label value_label;
@@ -22,6 +23,7 @@ public class ItemListCell extends ListCell<Item> {
     @Override
     protected void updateItem(Item item, boolean empty) {
         super.updateItem(item, empty);
+        this.item = item;
         // Make empty items empty
         if (empty || item == null) {
             setStyle("-fx-background-color: #045D56");
@@ -45,6 +47,31 @@ public class ItemListCell extends ListCell<Item> {
             setStyle("-fx-padding: 0");
             setText(null);
             setGraphic(view);
+        }
+    }
+
+    public void editOnClick(){
+        Item newItem = ItemDataDialog.display();
+        if (newItem != null){
+            item.name = newItem.name;
+            item.serial = newItem.serial;
+            item.value = newItem.value;
+            refreshList();
+        }
+    }
+
+    public void deleteOnClick(){
+        InventoryModel model = InventoryModel.getInstance();
+        model.getItems().remove(item);
+        refreshList();
+    }
+
+    private void refreshList() {
+        // We don't need to sort since removing something will keep the rest in order
+        InventoryModel data = InventoryModel.getInstance();
+        listView.getItems().clear();
+        for (Item item : data.getItems()) {
+            listView.getItems().add(item);
         }
     }
 }

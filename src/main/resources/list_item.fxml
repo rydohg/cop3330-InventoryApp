@@ -20,7 +20,7 @@
                   <Font name="Droid Sans Fallback" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="629.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="edit_button" fitHeight="30.0" fitWidth="30.0" layoutX="583.0" layoutY="13.0" onMouseClicked="#editOnClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@edit.png" />
                </image>
@@ -30,6 +30,11 @@
                   <Font name="Droid Sans Fallback" size="18.0" />
                </font>
             </Label>
+            <ImageView fx:id="delete_button" fitHeight="30.0" fitWidth="30.0" layoutX="629.0" layoutY="13.0" onMouseClicked="#deleteOnClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@delete.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

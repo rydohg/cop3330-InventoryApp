@@ -20,6 +20,7 @@ public class ItemDataDialog {
     @FXML AnchorPane error_box;
     private static String name, serial;
     private static double value;
+    private static boolean cancelled = false;
 
     public static Item display(){
         try {
@@ -30,7 +31,9 @@ public class ItemDataDialog {
             stage.setTitle("Enter Item Details");
             stage.setScene(scene);
             stage.showAndWait();
-            return new Item(name, serial.trim(), value);
+            if (!cancelled){
+                return new Item(name, serial.trim(), value);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,6 +63,7 @@ public class ItemDataDialog {
     }
 
     public void closeOnClick(MouseEvent event){
+        cancelled = true;
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 }

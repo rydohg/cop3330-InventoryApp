@@ -140,8 +140,10 @@ public class MainController {
     public void newItemOnClick() {
         Item newItem = ItemDataDialog.display();
         InventoryModel model = InventoryModel.getInstance();
-        model.getItems().add(newItem);
-        refreshList();
+        if (newItem != null){
+            model.getItems().add(newItem);
+            refreshList();
+        }
     }
 
     public void sortOnChoice(String choice) {
