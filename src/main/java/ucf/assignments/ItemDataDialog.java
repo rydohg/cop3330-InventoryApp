@@ -1,3 +1,7 @@
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Ryan Doherty
+ */
 package ucf.assignments;
 
 import javafx.fxml.FXML;
@@ -14,15 +18,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ItemDataDialog {
-    @FXML TextField name_field;
-    @FXML TextField serial_field;
-    @FXML TextField value_field;
-    @FXML AnchorPane error_box;
     private static String name, serial;
     private static double value;
     private static boolean cancelled = false;
+    @FXML
+    TextField name_field;
+    @FXML
+    TextField serial_field;
+    @FXML
+    TextField value_field;
+    @FXML
+    AnchorPane error_box;
 
-    public static Item display(){
+    public static Item display() {
         try {
             Parent root = FXMLLoader.load(ItemDataDialog.class.getResource("/dialog.fxml"));
             Scene scene = new Scene(root);
@@ -31,7 +39,7 @@ public class ItemDataDialog {
             stage.setTitle("Enter Item Details");
             stage.setScene(scene);
             stage.showAndWait();
-            if (!cancelled){
+            if (!cancelled) {
                 return new Item(name, serial.trim(), value);
             }
         } catch (IOException e) {
@@ -40,11 +48,11 @@ public class ItemDataDialog {
         return null;
     }
 
-    public void submitOnClick(MouseEvent event){
+    public void submitOnClick(MouseEvent event) {
         name = name_field.getText();
         serial = serial_field.getText();
         value = Double.parseDouble(value_field.getText());
-        if (checkUniqueSerial(serial) && name.length() <= 256 && name.length() >= 2){
+        if (checkValidSerial(serial) && name.length() <= 256 && name.length() >= 2) {
             ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
         } else {
             error_box.setStyle("-fx-opacity: 1");
@@ -52,17 +60,20 @@ public class ItemDataDialog {
         }
     }
 
-    private boolean checkUniqueSerial(String serial) {
+    private boolean checkValidSerial(String serial) {
+        if (serial.length() != 10 || !serial.matches("[a-zA-Z0-9]*")) {
+            return false;
+        }
         InventoryModel model = InventoryModel.getInstance();
         for (Item i : model.getItems()) {
-            if (i.serial.equals(serial.trim())){
+            if (i.serial.equals(serial.trim())) {
                 return false;
             }
         }
         return true;
     }
 
-    public void closeOnClick(MouseEvent event){
+    public void closeOnClick(MouseEvent event) {
         cancelled = true;
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }

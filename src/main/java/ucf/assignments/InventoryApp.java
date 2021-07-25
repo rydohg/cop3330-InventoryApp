@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 
 
 public class InventoryApp extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/scene.fxml"));
@@ -21,9 +25,5 @@ public class InventoryApp extends Application {
         stage.setTitle("Cool Inventory App Name");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

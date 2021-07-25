@@ -1,3 +1,7 @@
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Ryan Doherty
+ */
 package ucf.assignments;
 
 import com.google.gson.Gson;

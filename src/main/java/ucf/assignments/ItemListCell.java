@@ -1,3 +1,7 @@
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Ryan Doherty
+ */
 package ucf.assignments;
 
 import javafx.fxml.FXML;
@@ -8,13 +12,17 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 public class ItemListCell extends ListCell<Item> {
+    private final ListView<Item> listView;
     private FXMLLoader mLoader;
-    private ListView<Item> listView;
     private Item item;
-    @FXML private Label item_name;
-    @FXML private Label serial_num;
-    @FXML private Label value_label;
-    @FXML private AnchorPane view;
+    @FXML
+    private Label item_name;
+    @FXML
+    private Label serial_num;
+    @FXML
+    private Label value_label;
+    @FXML
+    private AnchorPane view;
 
     public ItemListCell(ListView<Item> listView) {
         this.listView = listView;
@@ -30,14 +38,14 @@ public class ItemListCell extends ListCell<Item> {
             setText(null);
             setGraphic(null);
         } else {
-            if (mLoader == null){
+            if (mLoader == null) {
                 // Load list item fxml file
                 mLoader = new FXMLLoader(getClass().getResource("/list_item.fxml"));
                 // Set this class as controller for each list item
                 mLoader.setController(this);
                 try {
                     mLoader.load();
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -50,9 +58,9 @@ public class ItemListCell extends ListCell<Item> {
         }
     }
 
-    public void editOnClick(){
+    public void editOnClick() {
         Item newItem = ItemDataDialog.display();
-        if (newItem != null){
+        if (newItem != null) {
             item.name = newItem.name;
             item.serial = newItem.serial;
             item.value = newItem.value;
@@ -60,7 +68,7 @@ public class ItemListCell extends ListCell<Item> {
         }
     }
 
-    public void deleteOnClick(){
+    public void deleteOnClick() {
         InventoryModel model = InventoryModel.getInstance();
         model.getItems().remove(item);
         refreshList();

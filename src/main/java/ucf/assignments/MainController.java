@@ -1,7 +1,9 @@
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Ryan Doherty
+ */
 package ucf.assignments;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
@@ -40,7 +42,7 @@ public class MainController {
         // Refreshes view to match the data singleton and can filter by complete or not
         InventoryModel data = InventoryModel.getInstance();
         list_view.getItems().clear();
-        switch (sortBy){
+        switch (sortBy) {
             case "Name":
                 data.getItems().sort(Comparator.comparing(item -> item.name));
             case "Serial Number":
@@ -78,11 +80,11 @@ public class MainController {
     }
 
     public void sortOnClick() {
-        if (searchOpen){
+        if (searchOpen) {
             search_pane.setStyle("-fx-opacity: 0;");
             searchOpen = false;
         }
-        if (!categoryOpen){
+        if (!categoryOpen) {
             category_pane.setStyle("-fx-opacity: 1");
             category_selector.getSelectionModel().selectedIndexProperty()
                     .addListener(
@@ -97,8 +99,8 @@ public class MainController {
     }
 
     public void searchOnClick() {
-        if (!searchOpen){
-            if(!categoryOpen){
+        if (!searchOpen) {
+            if (!categoryOpen) {
                 category_pane.setStyle("-fx-opacity: 1;");
                 category_selector.getSelectionModel().selectedIndexProperty()
                         .addListener(
@@ -131,7 +133,7 @@ public class MainController {
                 case "Value" -> String.format("%.2f", item.value);
                 default -> "";
             };
-            if (itemText.contains(text)){
+            if (itemText.contains(text)) {
                 list_view.getItems().add(item);
             }
         }
@@ -140,14 +142,14 @@ public class MainController {
     public void newItemOnClick() {
         Item newItem = ItemDataDialog.display();
         InventoryModel model = InventoryModel.getInstance();
-        if (newItem != null){
+        if (newItem != null) {
             model.getItems().add(newItem);
             refreshList();
         }
     }
 
     public void sortOnChoice(String choice) {
-        if (searchOpen){
+        if (searchOpen) {
             searchField = choice;
         } else {
             sortBy = choice;

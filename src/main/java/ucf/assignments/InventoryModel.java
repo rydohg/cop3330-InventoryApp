@@ -1,8 +1,13 @@
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Ryan Doherty
+ */
 package ucf.assignments;
 
-import com.google.gson.Gson;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,29 +17,25 @@ public class InventoryModel {
 
     private InventoryModel() {
         items = new ArrayList<>();
-        items.add(new Item("Test Item", "hadfsadfs", 10.00));
-        items.add(new Item("Test Item 1", "IDK", 12.50));
-        items.add(new Item("B Test Item 1", "IDK", 12.50));
-        items.add(new Item("A Test Item 1", "IDK", 12.50));
     }
 
-    public static InventoryModel getInstance(){
-        if (model == null){
+    public static InventoryModel getInstance() {
+        if (model == null) {
             model = new InventoryModel();
         }
         return model;
     }
 
-    public ArrayList<Item> getItems(){
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void readDataFromFile(File file){
-        if (file != null && file.exists()){
+    public void readDataFromFile(File file) {
+        if (file != null && file.exists()) {
             StringBuilder fileContents = new StringBuilder();
             try {
                 Scanner scanner = new Scanner(file);
-                while (scanner.hasNextLine()){
+                while (scanner.hasNextLine()) {
                     fileContents.append(scanner.nextLine());
                     fileContents.append('\n');
                 }
@@ -44,11 +45,11 @@ public class InventoryModel {
             String data = fileContents.toString();
             String extension = getExtension(file.getPath());
             System.out.println(extension);
-            switch (extension){
+            switch (extension) {
                 case ".json":
                     items = DataFormatter.fromJson(data);
                     break;
-                case ".tsv":
+                case ".txt":
                     items = DataFormatter.fromTsv(data);
                     break;
                 case ".html":
@@ -58,17 +59,15 @@ public class InventoryModel {
         }
     }
 
-    public void writeDataToFile(File file){
-        if (file != null){
+    public void writeDataToFile(File file) {
+        if (file != null) {
             String extension = getExtension(file.getPath());
-            String dataString = "";
-            if (extension.equals(".json")){
-                dataString = DataFormatter.toJson(items);
-            } else if (extension.equals(".tsv")){
-                dataString = DataFormatter.toTsv(items);
-            } else if (extension.equals(".html")){
-                dataString = DataFormatter.toHtml(items);
-            }
+            String dataString = switch (extension) {
+                case ".json" -> DataFormatter.toJson(items);
+                case ".txt" -> DataFormatter.toTsv(items);
+                case ".html" -> DataFormatter.toHtml(items);
+                default -> "";
+            };
 
             FileWriter writer;
             try {
@@ -82,7 +81,7 @@ public class InventoryModel {
         }
     }
 
-    private String getExtension(String path){
+    private String getExtension(String path) {
         return path.substring(path.lastIndexOf("."));
     }
 
