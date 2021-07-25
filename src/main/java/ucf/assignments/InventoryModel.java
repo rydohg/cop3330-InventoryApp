@@ -36,6 +36,7 @@ public class InventoryModel {
                 Scanner scanner = new Scanner(file);
                 while (scanner.hasNextLine()){
                     fileContents.append(scanner.nextLine());
+                    fileContents.append('\n');
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -46,6 +47,9 @@ public class InventoryModel {
             switch (extension){
                 case ".json":
                     items = DataFormatter.fromJson(data);
+                    break;
+                case ".tsv":
+                    items = DataFormatter.fromTsv(data);
                     break;
             }
         }
@@ -58,6 +62,8 @@ public class InventoryModel {
             if (extension.equals(".json")){
                 Gson gson = new Gson();
                 dataString = gson.toJson(new ItemList(items));
+            } else if (extension.equals(".tsv")){
+                dataString = DataFormatter.toTsv(items);
             }
 
             FileWriter writer;
