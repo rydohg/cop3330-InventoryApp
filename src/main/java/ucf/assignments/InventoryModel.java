@@ -14,6 +14,8 @@ public class InventoryModel {
         items = new ArrayList<>();
         items.add(new Item("Test Item", "hadfsadfs", 10.00));
         items.add(new Item("Test Item 1", "IDK", 12.50));
+        items.add(new Item("B Test Item 1", "IDK", 12.50));
+        items.add(new Item("A Test Item 1", "IDK", 12.50));
     }
 
     public static InventoryModel getInstance(){

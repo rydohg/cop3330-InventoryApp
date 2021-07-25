@@ -41,7 +41,7 @@
                 </AnchorPane>
                 <AnchorPane GridPane.rowIndex="1">
                     <children>
-                        <AnchorPane layoutX="65.0" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
+                        <AnchorPane layoutX="65.0" onMouseClicked="#saveOnClick" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
                             <children>
                                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -55,7 +55,7 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="64.0" layoutY="75.0" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
+                        <AnchorPane layoutX="64.0" layoutY="75.0" onMouseClicked="#openOnClick" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
                             <children>
                                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -69,7 +69,7 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="66.0" layoutY="150.0" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
+                        <AnchorPane layoutX="66.0" layoutY="150.0" onMouseClicked="#searchOnClick" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
                             <children>
                                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -83,7 +83,7 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="66.0" layoutY="224.0" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
+                        <AnchorPane layoutX="66.0" layoutY="224.0" onMouseClicked="#sortOnClick" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
                             <children>
                                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -97,27 +97,27 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="27.0" layoutY="389.0" prefHeight="50.0">
+                        <AnchorPane id="category_selector" fx:id="category_pane" layoutX="27.0" layoutY="389.0" prefHeight="50.0" style="-fx-opacity: 0;">
                             <children>
                                 <Label layoutX="3.0" text="Sort/Search Category:" textFill="WHITE">
                                     <font>
                                         <Font name="Droid Sans Fallback" size="13.0" />
                                     </font>
                                 </Label>
-                                <ChoiceBox layoutY="24.0" prefWidth="150.0" style="-fx-background-color: #1EB980;" />
+                                <ChoiceBox fx:id="category_selector" layoutY="24.0" prefWidth="150.0" style="-fx-background-color: #1EB980;" />
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="28.0" layoutY="453.0" prefHeight="50.0">
+                        <AnchorPane fx:id="search_pane" layoutX="28.0" layoutY="453.0" prefHeight="50.0" style="-fx-opacity: 0;">
                             <children>
                                 <Label layoutX="3.0" text="Search:" textFill="WHITE">
                                     <font>
                                         <Font name="Droid Sans Fallback" size="13.0" />
                                     </font>
                                 </Label>
-                                <TextField layoutY="24.0" maxWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #1eb980;" />
+                                <TextField fx:id="search_box" layoutY="24.0" maxWidth="-Infinity" onKeyTyped="#searchOnType" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #1eb980;" />
                             </children>
                         </AnchorPane>
-                  <AnchorPane layoutX="66.0" layoutY="299.0" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
+                  <AnchorPane layoutX="66.0" layoutY="299.0" onMouseClicked="#newItemOnClick" prefHeight="75.0" prefWidth="75.0" style="-fx-cursor: hand;" styleClass="image-button">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>

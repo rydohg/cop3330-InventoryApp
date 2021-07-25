@@ -23,7 +23,13 @@ class DataFormatter {
 }
 
 class MainController {
-
+    initialize()
+    saveOnClick()
+    openOnClick()
+    searchOnClick()
+    sortOnClick()
+    newItemOnClick()
+    sortOnChoice()
 }
 
 class ItemListCell {
