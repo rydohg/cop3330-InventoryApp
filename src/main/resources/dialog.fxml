@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #045D56;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ItemDataDialog">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Item Name:" textFill="WHITE">
+         <font>
+            <Font name="Droid Sans Fallback" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name_field" layoutX="12.0" layoutY="47.0" prefHeight="24.0" prefWidth="377.0" style="-fx-background-color: #1eb980;">
+         <font>
+            <Font name="Droid Sans Fallback" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="87.0" text="Serial Number:" textFill="WHITE">
+         <font>
+            <Font name="Droid Sans Fallback" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="serial_field" layoutX="12.0" layoutY="120.0" prefHeight="24.0" prefWidth="189.0" style="-fx-background-color: #1eb980;">
+         <font>
+            <Font name="Droid Sans Fallback" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="236.0" layoutY="87.0" text="Value:" textFill="WHITE">
+         <font>
+            <Font name="Droid Sans Fallback" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="value_field" layoutX="236.0" layoutY="120.0" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #1eb980;">
+         <font>
+            <Font name="Droid Sans Fallback" size="14.0" />
+         </font>
+      </TextField>
+      <AnchorPane fx:id="error_box" layoutX="41.0" layoutY="166.0" prefHeight="150.0" prefWidth="320.0" style="-fx-background-color: #ff6859; -fx-border-radius: 5; -fx-opacity: 0;">
+         <children>
+            <Label layoutX="7.0" layoutY="14.0" text="Error:" textFill="WHITE">
+               <font>
+                  <Font name="Droid Sans Fallback" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="41.0" text="Make sure serial number is unique" textFill="WHITE">
+               <font>
+                  <Font name="Droid Sans Fallback" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="68.0" text="and name is between 2 and 256" textFill="WHITE">
+               <font>
+                  <Font name="Droid Sans Fallback" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="95.0" text="characters" textFill="WHITE">
+               <font>
+                  <Font name="Droid Sans Fallback" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="17.0" layoutY="336.0" onMouseClicked="#submitOnClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #1eb980; -fx-background-radius: 5; -fx-border-color: #045d56; -fx-border-radius: 5; -fx-cursor: hand;">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" text="Submit" textFill="WHITE" AnchorPane.bottomAnchor="13.0">
+               <font>
+                  <Font name="Droid Sans Fallback" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="286.0" layoutY="336.0" onMouseClicked="#closeOnClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #ff8659; -fx-background-radius: 5; -fx-border-color: #045d56; -fx-border-radius: 5; -fx-cursor: hand;">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="13.0">
+               <font>
+                  <Font name="Droid Sans Fallback" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

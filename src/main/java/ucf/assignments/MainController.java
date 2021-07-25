@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 
 public class MainController {
@@ -139,6 +138,8 @@ public class MainController {
     }
 
     public void newItemOnClick() {
+        Item newItem = ItemDataDialog.display();
+
     }
 
     public void sortOnChoice(String choice) {
