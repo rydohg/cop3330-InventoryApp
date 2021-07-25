@@ -6,27 +6,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="view" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #045D56;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="view" prefHeight="100.0" prefWidth="680.0" style="-fx-background-color: #045D56;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="88.0" prefWidth="390.0" style="-fx-border-color: #fff;">
+      <AnchorPane layoutX="3.0" layoutY="6.0" prefHeight="88.0" prefWidth="670.0" style="-fx-border-color: #fff; -fx-border-radius: 5;">
          <children>
-            <Label fx:id="item_name" layoutX="14.0" layoutY="14.0" text="Item Name" textFill="WHITE" wrapText="true">
+            <Label fx:id="item_name" layoutX="16.0" layoutY="11.0" text="Item Name" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Droid Sans Fallback" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="serial_num" layoutX="14.0" layoutY="47.0" text="XXXXXXXXXX" textFill="WHITE">
+            <Label fx:id="serial_num" layoutX="16.0" layoutY="47.0" text="XXXXXXXXXX" textFill="WHITE">
                <font>
                   <Font name="Droid Sans Fallback" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="336.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="629.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@edit.png" />
                </image>
             </ImageView>
-            <Label fx:id="value_label" layoutX="274.0" layoutY="47.0" prefHeight="27.0" prefWidth="102.0" text="\$100.50" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="value_label" layoutX="583.0" layoutY="47.0" prefHeight="27.0" prefWidth="91.0" text="\$100.50" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Droid Sans Fallback" size="18.0" />
                </font>

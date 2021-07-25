@@ -24,6 +24,7 @@ public class ItemListCell extends ListCell<Item> {
         super.updateItem(item, empty);
         // Make empty items empty
         if (empty || item == null) {
+            setStyle("-fx-background-color: #045D56");
             setText(null);
             setGraphic(null);
         } else {
@@ -40,7 +41,8 @@ public class ItemListCell extends ListCell<Item> {
             }
             item_name.setText(item.name);
             serial_num.setText(item.serial);
-            value_label.setText(String.format("%2f", item.value));
+            value_label.setText(String.format("$%.2f", item.value));
+            setStyle("-fx-padding: 0");
             setText(null);
             setGraphic(view);
         }
