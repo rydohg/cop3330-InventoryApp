@@ -44,7 +44,7 @@ public class InventoryModel {
             String extension = getExtension(file.getPath());
             System.out.println(extension);
             switch (extension){
-                case "json":
+                case ".json":
                     items = DataFormatter.fromJson(data);
                     break;
             }
@@ -55,18 +55,17 @@ public class InventoryModel {
         if (file != null){
             String extension = getExtension(file.getPath());
             String dataString = "";
-            if (extension.equals("json")){
+            if (extension.equals(".json")){
                 Gson gson = new Gson();
-                dataString = gson.toJson(items);
+                dataString = gson.toJson(new ItemList(items));
             }
 
             FileWriter writer;
             try {
-                if(file.createNewFile()){
-                    writer = new FileWriter(file);
-                    writer.write(dataString);
-                    writer.close();
-                }
+                file.createNewFile();
+                writer = new FileWriter(file);
+                writer.write(dataString);
+                writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

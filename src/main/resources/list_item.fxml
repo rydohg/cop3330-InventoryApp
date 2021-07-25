@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="view" prefHeight="100.0" prefWidth="680.0" style="-fx-background-color: #045D56;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="view" prefHeight="100.0" prefWidth="680.0" style="-fx-background-color: #045D56;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="3.0" layoutY="6.0" prefHeight="88.0" prefWidth="670.0" style="-fx-border-color: #fff; -fx-border-radius: 5;">
          <children>

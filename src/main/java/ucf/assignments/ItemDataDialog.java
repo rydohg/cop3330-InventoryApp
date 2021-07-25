@@ -45,6 +45,7 @@ public class ItemDataDialog {
             ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
         } else {
             error_box.setStyle("-fx-opacity: 1");
+            error_box.setStyle("-fx-background-color: #ff6859");
         }
     }
 
