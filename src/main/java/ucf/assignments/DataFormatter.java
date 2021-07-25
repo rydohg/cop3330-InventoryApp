@@ -33,4 +33,33 @@ public class DataFormatter {
         }
         return data.toString();
     }
+
+    public static String toHtml(ArrayList<Item> list) {
+        StringBuilder data = new StringBuilder();
+        data.append("<!DOCTYPE html><html><head><!--DATA:")
+                .append(toJson(list))
+                .append("-->")
+                .append("<title>Inventory App</title>")
+                .append("</head><body><table>");
+        for (Item i : list) {
+            data.append("<tr><td>")
+                    .append(i.name)
+                    .append("</td><td>")
+                    .append(i.serial)
+                    .append("</td><td>")
+                    .append(i.value)
+                    .append("</td></tr>");
+        }
+        data.append("</table></body></html>");
+        return data.toString();
+    }
+
+    public static String toJson(ArrayList<Item> items) {
+        Gson gson = new Gson();
+        return gson.toJson(new ItemList(items));
+    }
+
+    public static ArrayList<Item> fromHtml(String data) {
+        return fromJson(data.substring(data.indexOf("<!--DATA:") + 9, data.indexOf("-->")));
+    }
 }

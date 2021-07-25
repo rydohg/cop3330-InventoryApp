@@ -51,6 +51,9 @@ public class InventoryModel {
                 case ".tsv":
                     items = DataFormatter.fromTsv(data);
                     break;
+                case ".html":
+                    items = DataFormatter.fromHtml(data);
+                    break;
             }
         }
     }
@@ -60,10 +63,11 @@ public class InventoryModel {
             String extension = getExtension(file.getPath());
             String dataString = "";
             if (extension.equals(".json")){
-                Gson gson = new Gson();
-                dataString = gson.toJson(new ItemList(items));
+                dataString = DataFormatter.toJson(items);
             } else if (extension.equals(".tsv")){
                 dataString = DataFormatter.toTsv(items);
+            } else if (extension.equals(".html")){
+                dataString = DataFormatter.toHtml(items);
             }
 
             FileWriter writer;
