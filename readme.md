@@ -1,8 +1,8 @@
 # Inventory App
-###Description
+### Description
 A Material Design inspired inventory app for COP3330.
 
-##Requirements
+## Requirements
 ### Add Inventory Item
 `NEW ITEM button`
 
