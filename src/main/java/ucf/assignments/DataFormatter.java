@@ -10,12 +10,14 @@ import java.util.ArrayList;
 
 public class DataFormatter {
     public static ArrayList<Item> fromJson(String data) {
+        // Use gson to convert from JSON
         Gson gson = new Gson();
         ItemList list = gson.fromJson(data, ItemList.class);
         return list.items;
     }
 
     public static ArrayList<Item> fromTsv(String data) {
+        // Convert from TSV format
         ArrayList<Item> items = new ArrayList<>();
         for (String line : data.split("\n")) {
             String[] values = line.split("\t");
@@ -26,6 +28,7 @@ public class DataFormatter {
     }
 
     public static String toTsv(ArrayList<Item> list) {
+        // Convert to TSV format
         StringBuilder data = new StringBuilder();
         for (Item i : list) {
             data.append(i.name);
@@ -39,6 +42,8 @@ public class DataFormatter {
     }
 
     public static String toHtml(ArrayList<Item> list) {
+        // Create skeleton for html, add the data in a comment in the header for easy
+        // parsing using GSON, then create table with data
         StringBuilder data = new StringBuilder();
         data.append("<!DOCTYPE html><html><head><!--DATA:")
                 .append(toJson(list))
@@ -59,11 +64,13 @@ public class DataFormatter {
     }
 
     public static String toJson(ArrayList<Item> items) {
+        // Use GSON to convert to JSON
         Gson gson = new Gson();
         return gson.toJson(new ItemList(items));
     }
 
     public static ArrayList<Item> fromHtml(String data) {
+        // Use DATA comment to decode html file
         return fromJson(data.substring(data.indexOf("<!--DATA:") + 9, data.indexOf("-->")));
     }
 }

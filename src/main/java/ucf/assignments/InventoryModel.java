@@ -44,7 +44,6 @@ public class InventoryModel {
             }
             String data = fileContents.toString();
             String extension = getExtension(file.getPath());
-            System.out.println(extension);
             switch (extension) {
                 case ".json":
                     items = DataFormatter.fromJson(data);

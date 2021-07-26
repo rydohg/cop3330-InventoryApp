@@ -1,4 +1,14 @@
 @startuml
+
+class InventoryApp {
+    main(String[] args)
+    start(Stage stage)
+}
+
+class ItemList {
+    ArrayList<Item> items
+}
+
 class InventoryModel {
     ArrayList<Item> items
     getInstance()
@@ -32,9 +42,22 @@ class MainController {
     sortOnChoice()
 }
 
+class ItemDataDialog {
+    display()
+    checkValidSerial(String serial)
+    closeOnClick()
+    submitOnClick()
+}
+
 class ItemListCell {
     updateItem(ListItem item, boolean empty)
 }
 
-InventoryModel - Item
+InventoryModel <-- ItemList
+ItemList <-- Item
+DataFormatter - InventoryModel
+
+InventoryApp -- ItemDataDialog
+InventoryApp -- ItemListCell
+InventoryApp -- MainController
 @enduml

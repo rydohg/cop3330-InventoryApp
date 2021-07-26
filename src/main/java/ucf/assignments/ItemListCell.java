@@ -49,9 +49,11 @@ public class ItemListCell extends ListCell<Item> {
                     e.printStackTrace();
                 }
             }
+            // Initialize values
             item_name.setText(item.name);
             serial_num.setText(item.serial);
             value_label.setText(String.format("$%.2f", item.value));
+            // Fix spacing between list items
             setStyle("-fx-padding: 0");
             setText(null);
             setGraphic(view);
@@ -59,6 +61,7 @@ public class ItemListCell extends ListCell<Item> {
     }
 
     public void editOnClick() {
+        // Edit item on successful dialog
         Item newItem = ItemDataDialog.display();
         if (newItem != null) {
             item.name = newItem.name;
@@ -69,6 +72,7 @@ public class ItemListCell extends ListCell<Item> {
     }
 
     public void deleteOnClick() {
+        // Delete the current item from the model then refresh the list
         InventoryModel model = InventoryModel.getInstance();
         model.getItems().remove(item);
         refreshList();

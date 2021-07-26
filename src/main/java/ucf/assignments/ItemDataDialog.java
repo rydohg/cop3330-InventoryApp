@@ -32,6 +32,7 @@ public class ItemDataDialog {
 
     public static Item display() {
         try {
+            // Load the dialog as a modal and wait until it is closed by submit or close
             Parent root = FXMLLoader.load(ItemDataDialog.class.getResource("/dialog.fxml"));
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -52,18 +53,22 @@ public class ItemDataDialog {
         name = name_field.getText();
         serial = serial_field.getText();
         value = Double.parseDouble(value_field.getText());
+        // Check the validity of the data
         if (checkValidSerial(serial) && name.length() <= 256 && name.length() >= 2) {
             ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
         } else {
+            // Show the error dialog
             error_box.setStyle("-fx-opacity: 1");
             error_box.setStyle("-fx-background-color: #ff6859");
         }
     }
 
-    private boolean checkValidSerial(String serial) {
+    public boolean checkValidSerial(String serial) {
+        // Check it is the right length and is alphanumeric
         if (serial.length() != 10 || !serial.matches("[a-zA-Z0-9]*")) {
             return false;
         }
+        // Check if in model already
         InventoryModel model = InventoryModel.getInstance();
         for (Item i : model.getItems()) {
             if (i.serial.equals(serial.trim())) {
@@ -74,6 +79,7 @@ public class ItemDataDialog {
     }
 
     public void closeOnClick(MouseEvent event) {
+        // Close dialog gracefully
         cancelled = true;
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }

@@ -43,14 +43,9 @@ public class MainController {
         InventoryModel data = InventoryModel.getInstance();
         list_view.getItems().clear();
         switch (sortBy) {
-            case "Name":
-                data.getItems().sort(Comparator.comparing(item -> item.name));
-            case "Serial Number":
-                data.getItems().sort(Comparator.comparing(item -> item.serial));
-                break;
-            case "Value":
-                data.getItems().sort(Comparator.comparing(item -> item.value));
-                break;
+            case "Name" -> data.getItems().sort(Comparator.comparing(item -> item.name.toLowerCase()));
+            case "Serial Number" -> data.getItems().sort(Comparator.comparing(item -> item.serial));
+            case "Value" -> data.getItems().sort(Comparator.comparing(item -> item.value));
         }
         for (Item item : data.getItems()) {
             list_view.getItems().add(item);
@@ -80,6 +75,7 @@ public class MainController {
     }
 
     public void sortOnClick() {
+        // Selectively hide choicebox/textfield as needed
         if (searchOpen) {
             search_pane.setStyle("-fx-opacity: 0;");
             searchOpen = false;
@@ -99,18 +95,22 @@ public class MainController {
     }
 
     public void searchOnClick() {
+        // Selectively hide choicebox/textfield as needed
         if (!searchOpen) {
             if (!categoryOpen) {
                 category_pane.setStyle("-fx-opacity: 1;");
+                // Listen for the user to select an option
                 category_selector.getSelectionModel().selectedIndexProperty()
                         .addListener(
                                 (observable, oldValue, newValue) ->
                                         sortOnChoice(category_selector.getItems().get(newValue.intValue()))
                         );
             }
+            // Show the dropdown
             search_pane.setStyle("-fx-opacity: 1;");
             searchOpen = true;
         } else {
+            // Hide if already open
             category_pane.setStyle("-fx-opacity: 0;");
             search_pane.setStyle("-fx-opacity: 0;");
             categoryOpen = false;
@@ -124,6 +124,8 @@ public class MainController {
     }
 
     private void search(String text) {
+        // Selectively add things from the model to the list view if they match the query
+        // I used contains() but maybe I should use startsWith()?
         InventoryModel data = InventoryModel.getInstance();
         list_view.getItems().clear();
         for (Item item : data.getItems()) {
@@ -140,6 +142,7 @@ public class MainController {
     }
 
     public void newItemOnClick() {
+        // Use dialog to get/verify new Item then add it
         Item newItem = ItemDataDialog.display();
         InventoryModel model = InventoryModel.getInstance();
         if (newItem != null) {
@@ -149,10 +152,13 @@ public class MainController {
     }
 
     public void sortOnChoice(String choice) {
+        // Keep track of what's open to keep the right things on screen then
+        // refresh to put new sort in to place
         if (searchOpen) {
             searchField = choice;
         } else {
             sortBy = choice;
         }
+        refreshList();
     }
 }

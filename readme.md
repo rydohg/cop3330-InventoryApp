@@ -24,6 +24,7 @@ A Material Design inspired inventory app for COP3330.
 ### Search
 `Click SEARCH button then select what field we are searching then type the query in the text box`
 
+#### Clicking the Search or Sort buttons again close the search/sort choicebox/textfield
 ### Save
 `Click SAVE button then select the file type by putting in the extension you want (JSON/TXT/HTML)`
 
