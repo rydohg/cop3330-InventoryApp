@@ -29,4 +29,4 @@ A Material Design inspired inventory app for COP3330.
 `Click SAVE button then select the file type by putting in the extension you want (JSON/TXT/HTML)`
 
 ### Load
-'Click LOAD button then select any file created by application'
+`Click LOAD button then select any file created by application`
